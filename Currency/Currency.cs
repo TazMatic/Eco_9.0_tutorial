@@ -13,7 +13,7 @@ using Eco.Shared.Localization;
 using Eco.Shared.Utils;
 using Eco.Shared.View;
 
-namespace Eco_9._0_tutorial
+namespace Eco_9_0_tutorial
 {
     public class Currency : IModKitPlugin, IServerPlugin
     {
