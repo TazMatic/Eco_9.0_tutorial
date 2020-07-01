@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Eco.Core">
+      <HintPath>..\..\..\..\Desktop\eco mods\DLL 9.0 source\Eco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Gameplay">
+      <HintPath>..\..\..\..\Desktop\eco mods\DLL 9.0 source\Eco.Gameplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Eco.Shared">
+      <HintPath>..\..\..\..\Desktop\eco mods\DLL 9.0 source\Eco.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
