@@ -1,2 +1,2 @@
 # Eco_9.0_tutorial
-A series of tutorials for Eco 9.0 with examples and explanations
+We are a group of players who want to lower the learning curve of modding Eco 9.0 and beyond. We hope to achieve this by exploring the modding world of Eco and documents things as we learn them.

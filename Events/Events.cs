@@ -2,11 +2,12 @@
 using Eco.Core.Plugins.Interfaces;
 using Eco.Core.Utils;
 using Eco.Gameplay.GameActions;
+using Eco.Gameplay.Systems.Chat;
+using Eco.Shared.Services;
 
-
-namespace Eco_9_0_tutorial
+namespace Eco_9_0_tutorial.events
 {
-    public class Currency : IModKitPlugin, IServerPlugin
+    public class ModName : IModKitPlugin, IServerPlugin
     {
         private Boolean started = false;
 
@@ -21,10 +22,13 @@ namespace Eco_9_0_tutorial
         }
         public void start()
         {
-            var test1 = new Listen();
-            ActionUtil.AddListener(test1);
+            //Register listener
+            var listener = new Listen();
+            ActionUtil.AddListener(listener);
         }
     }
+    //Create the listener
+    //The listener captures all game events adn it it on the developer to filter out the one they want
     public class Listen : IGameActionAware
     {
         public void ActionPerformed(GameAction action)
@@ -34,221 +38,184 @@ namespace Eco_9_0_tutorial
                 /*
                     ************Player Actions************
                 */
-
+                //Triggers everytime a message is sent
                 case ChatSent chatSent:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player remains logged in for a moment
                 case Play play:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player logs in for the first time
                 case FirstLogin firstLogin:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when an Item finishes crafting
                 case ItemCraftedAction itemCraftedAction:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player adds labor to a work order
                 case LaborWorkOrderAction laborWorkOrderAction:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player mines or digs
                 case DigOrMine digOrMine:
-                    Console.WriteLine("Case 2");
-                    //returns the block name
-                    Console.WriteLine("Block: " + digOrMine.ItemUsed.DisplayName);
-                    //return location of the block placed
-                    Console.WriteLine("Location: " + digOrMine.Location);
-                    //returns the username that placed the block
-                    Console.WriteLine("Username: " + digOrMine.Citizen.Name);
                     break;
+                //Triggers when a road block gets tamped with a road tool
                 case TampRoad tampRoad:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player plows a dirt block
                 case PlowField plowField:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player places a block
                 case DropOrPickupBlock dropOrPickupBlock:
-                    Console.WriteLine("Case 1");
-                    //returns the block name
-                    Console.WriteLine("Block: " + dropOrPickupBlock.ItemUsed.DisplayName);
-                    //return location of the block placed
-                    Console.WriteLine("Location: " + dropOrPickupBlock.Location);
-                    //returns the username that placed the block
-                    Console.WriteLine("Username: " + dropOrPickupBlock.Citizen.Name);
                     break;
+                //Triggers when a player places a world object
                 case PlaceOrPickUpObject placeOrPickUpObject:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player hits a tree
                 case ChopTree chopTree:
-                    Console.WriteLine("Case 4");
-                    //returns the tree name
-                    Console.WriteLine("Block: " + chopTree.TreeSpecies);
-                    //return location of the tree being chopped
-                    Console.WriteLine("Location: " + chopTree.Location);
-                    //returns the username that chopped the tree
-                    Console.WriteLine("Username: " + chopTree.Citizen.Name);
-                    //Says if the tree has fallen or not
-                    Console.WriteLine("Was Felled: " + chopTree.Felled);
                     break;
+                //Triggers when a player hits a stump
                 case ChopStump chopStump:
-                    Console.WriteLine("Case 5");
-                    //returns the tree name
-                    Console.WriteLine("Block: " + chopStump.TreeSpecies);
-                    //return location of the tree being chopped
-                    Console.WriteLine("Location: " + chopStump.Location);
-                    //returns the username that chopped the tree
-                    Console.WriteLine("Username: " + chopStump.Citizen.Name);
-                    //returns if the stump was destroyed
-                    Console.WriteLine("WasDestroyed: " + chopStump.Destroyed);
                     break;
+                //Triggers when a player opens an object interface
                 case OpenAction openAction:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when an item moves in an inventory
                 case InventoryAction inventoryAction:
-                    //TODO Research what this is used for
                     break;
+                 //Triggers when a player collects tree debris
                 case CleanupTreeDebris cleanupTreeDebris:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player transfers owned property
                 case PropertyTransfer propertyTransfer:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player is added or removed from a demographic
                 case DemographicChange demographicChange:
-                    //TODO Research what this is used for
                     break;
 
                 /*
                     ************Economy Actions************
                 */
-
+                //Triggers when a player recieves money from the goverment
                 case ReceiveGovernmentFunds receiveGovernmentFunds:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player pays a tax
                 case PayTax payTax:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player send money
                 case TransferMoney transferMoney:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player claim or unclaims land
                 case ClaimOrUnclaimProperty claimOrUnclaimProperty:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player creates a currency
                 case CreateCurrency createCurrency:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player mints a currency
                 case MintCurrency mintCurrency:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player exchanges items at a store
                 case Trade trade:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player accepts a loan
                 case FinanceAction FinanceAction:
-                    //TODO Research what this is used for
                     break;
 
                 /*
                     ************Civics Actions************
                 */
-
+                //Triggers when a player loses an election
                 case LostElection lostElection:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player wins an election
                 case WonElection wonElection:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player joins or leaves an election
                 case JoinOrLeaveElection joinOrLeaveElection:
                     //TODO Research what this is used for
                     break;
+                //Triggers when an election is started
                 case StartElection startElection:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player votes on law or election
                 case Vote vote:
-                    //TODO Research what this is used for
-                    break;
-                case ElectionAction electionAction:
-                    //TODO Research what this is used for
                     break;
 
                 /*
                     ************Skill related Actions************
                 */
-
+                //Triggers when a player gains a star
                 case CharacterLevelUp characterLevelUp:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player levels up a specialty
                 case SpecialtyLevelUp specialtyLevelUp:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player selects a new profession
                 case GainProfession gainProfession:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player selects a new specialty
                 case GainSpecialty gainSpecialty:
-                    //TODO Research what this is used for
                     break;
-                case SkillAction skillAction:
-                    //TODO Research what this is used for
-                    break;
+
 
                 /*
                     ************Plant related Actions************
                 */
-
+                //Triggers when a player harvests a plant or animal
                 case HarvestOrHunt harvestOrHunt:
-                    //returns the plant name
-                    Console.WriteLine("Block: " + harvestOrHunt.Species);
-                    //return location of the block placed
-                    Console.WriteLine("Location: " + harvestOrHunt.Location);
-                    //returns the username that harvested the plant
-                    Console.WriteLine("Username: " + harvestOrHunt.Citizen.Name);
                     break;
+                //Triggers when a player plants a seed
                 case PlantSeeds plantSeeds:
-                    //TODO Research what this is used for
                     break;
 
                 /*
                     ************Construction related Actions************
                 */
-
+                //Triggers when a player adds an item to a work order
                 case AddToWorkOrderAction addToWorkOrderAction:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player creates a work order
                 case CreateWorkOrder createWorkOrder:
                     //TODO Research what this is used for
                     break;
+                //Triggers when a player crafts for a work order
                 case WorkOrderAction workOrderAction:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player places a block in a form
                 case ConstructOrDeconstruct constructOrDeconstruct:
-                    //TODO Research what this is used for
-                    break;
-
-                /*
-                    ************Base classes************
-                */
-
-                case BlockAddRemove blockAddRemove:
-                    //TODO Research what this is used for
-                    break;
-                case WorkableAction workableAction:
-                    //TODO Research what this is used for
                     break;
 
                 /*
                     ************Pollution related Actions************
                 */
-
+                //Triggers when pollution gets released
                 case PolluteAir polluteAir:
-                    //TODO Research what this is used for
                     break;
+                //Triggers when a player drops garbage
                 case DropGarbage dropGarbage:
-                    //TODO Research what this is used for
+                    break;
+
+                /*
+                    ************Base classes************
+                */
+                case ElectionAction electionAction:
+                    break;
+                case BlockAddRemove blockAddRemove:
+                    break;
+                case WorkableAction workableAction:
+                    break;
+                case SkillAction skillAction:
                     break;
 
                 /*
                     ************Other Actions************
                 */
-
-                case Timer timer:
+                //currently not in the game
+                /*case Timer timer:
                     //TODO Research what this is used for
-                    break;
+                    break;*/
                 default:
                     Console.WriteLine("Default case: " + action.GetType());
                     break;
