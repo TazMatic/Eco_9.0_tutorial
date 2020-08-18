@@ -28,7 +28,7 @@ namespace Eco_9_0_tutorial.events
         }
     }
     //Create the listener
-    //The listener captures all game events adn it it on the developer to filter out the one they want
+    //The listener captures all game events and it is on the developer to filter out the one(s) they want
     public class Listen : IGameActionAware
     {
         public void ActionPerformed(GameAction action)
